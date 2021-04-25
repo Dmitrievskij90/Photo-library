@@ -15,6 +15,7 @@
 		5CFF57002635A169002216CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CFF56FE2635A169002216CF /* LaunchScreen.storyboard */; };
 		5CFF570C2635BE06002216CF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF570B2635BE06002216CF /* LoginViewController.swift */; };
 		5CFF570F2635BE75002216CF /* UIViewController+StoryBoardinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF570E2635BE75002216CF /* UIViewController+StoryBoardinit.swift */; };
+		5CFF57132635BF73002216CF /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CFF57122635BF73002216CF /* LoginViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5CFF57012635A169002216CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CFF570B2635BE06002216CF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5CFF570E2635BE75002216CF /* UIViewController+StoryBoardinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryBoardinit.swift"; sourceTree = "<group>"; };
+		5CFF57122635BF73002216CF /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				5CFF56FE2635A169002216CF /* LaunchScreen.storyboard */,
 				5CFF57012635A169002216CF /* Info.plist */,
 				5CFF570E2635BE75002216CF /* UIViewController+StoryBoardinit.swift */,
+				5CFF57122635BF73002216CF /* LoginViewController.storyboard */,
 			);
 			path = "Photo library";
 			sourceTree = "<group>";
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CFF57002635A169002216CF /* LaunchScreen.storyboard in Resources */,
+				5CFF57132635BF73002216CF /* LoginViewController.storyboard in Resources */,
 				5CFF56FD2635A169002216CF /* Assets.xcassets in Resources */,
 				5CFF56FB2635A168002216CF /* Main.storyboard in Resources */,
 			);

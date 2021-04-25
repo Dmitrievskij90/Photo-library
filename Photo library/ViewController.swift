@@ -21,14 +21,18 @@ class ViewController: UIViewController {
     }
 
     @IBAction private func showButtonPressed(_ sender: UIButton) {
-//        print(photoArray)
+        // print(photoArray)
+        let viewController = LoginViewController.instantiate()
+        // viewController.modalTransitionStyle = .coverVertical
+        // viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true, completion: nil)
     }
 
     private func displayImagePickerController() {
         let imagePicerController = UIImagePickerController()
         imagePicerController.delegate = self
         imagePicerController.sourceType = .photoLibrary
-        //        imagePicerController.allowsEditing = true
+        //imagePicerController.allowsEditing = true
         present(imagePicerController, animated: true, completion: nil)
     }
 }
