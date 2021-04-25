@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         let imagePicerController = UIImagePickerController()
         imagePicerController.delegate = self
         imagePicerController.sourceType = .photoLibrary
-        //imagePicerController.allowsEditing = true
+        // imagePicerController.allowsEditing = true
         present(imagePicerController, animated: true, completion: nil)
     }
 }

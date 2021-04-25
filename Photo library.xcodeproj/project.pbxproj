@@ -16,6 +16,7 @@
 		5CFF570C2635BE06002216CF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF570B2635BE06002216CF /* LoginViewController.swift */; };
 		5CFF570F2635BE75002216CF /* UIViewController+StoryBoardinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF570E2635BE75002216CF /* UIViewController+StoryBoardinit.swift */; };
 		5CFF57132635BF73002216CF /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CFF57122635BF73002216CF /* LoginViewController.storyboard */; };
+		5CFF57172635C8A0002216CF /* ScopeOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CFF57162635C8A0002216CF /* ScopeOne-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		5CFF570B2635BE06002216CF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5CFF570E2635BE75002216CF /* UIViewController+StoryBoardinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryBoardinit.swift"; sourceTree = "<group>"; };
 		5CFF57122635BF73002216CF /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		5CFF57162635C8A0002216CF /* ScopeOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ScopeOne-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		5CFF56F22635A168002216CF /* Photo library */ = {
 			isa = PBXGroup;
 			children = (
+				5CFF57152635C891002216CF /* Resources */,
 				5CFF56F32635A168002216CF /* AppDelegate.swift */,
 				5CFF56F52635A168002216CF /* SceneDelegate.swift */,
 				5CFF56F72635A168002216CF /* ViewController.swift */,
@@ -74,6 +77,14 @@
 				5CFF57122635BF73002216CF /* LoginViewController.storyboard */,
 			);
 			path = "Photo library";
+			sourceTree = "<group>";
+		};
+		5CFF57152635C891002216CF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5CFF57162635C8A0002216CF /* ScopeOne-Regular.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +145,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CFF57172635C8A0002216CF /* ScopeOne-Regular.ttf in Resources */,
 				5CFF57002635A169002216CF /* LaunchScreen.storyboard in Resources */,
 				5CFF57132635BF73002216CF /* LoginViewController.storyboard in Resources */,
 				5CFF56FD2635A169002216CF /* Assets.xcassets in Resources */,
