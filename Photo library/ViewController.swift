@@ -8,41 +8,36 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var photoArray = [UIImage]()
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var showButton: UIButton!
 
-    var photoArray = [UIImage]()
-
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    @IBAction private func addButtonPressed(_ sender: UIButton) {
+        displayImagePickerController()
+    }
+
+    @IBAction private func showButtonPressed(_ sender: UIButton) {
+        print(photoArray)
     }
 
     private func displayImagePickerController() {
         let imagePicerController = UIImagePickerController()
         imagePicerController.delegate = self
         imagePicerController.sourceType = .photoLibrary
-//        imagePicerController.allowsEditing = true
+        //        imagePicerController.allowsEditing = true
         present(imagePicerController, animated: true, completion: nil)
-    }
-    
-    @IBAction func addButtonPressed(_ sender: UIButton) {
-        displayImagePickerController()
-    }
-
-
-    @IBAction func showButtonPressed(_ sender: UIButton) {
-        print(photoArray)
     }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let pickedImage = info[.originalImage] as? UIImage {
             photoArray.append(pickedImage)
-            }
-            dismiss(animated: true, completion: nil)
+        }
+        dismiss(animated: true, completion: nil)
     }
 }
-
