@@ -21,13 +21,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_background" translatesAutoresizingMaskIntoConstraints="NO" id="OaW-we-bGw">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background" translatesAutoresizingMaskIntoConstraints="NO" id="OaW-we-bGw">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOy-db-MIZ">
-                                <rect key="frame" x="157" y="325" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOy-db-MIZ">
+                                <rect key="frame" x="157" y="318" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="gZz-t7-yBC"/>
+                                    <constraint firstAttribute="height" constant="100" id="v7g-6A-SVI"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" image="ic_plus1">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -36,9 +38,12 @@
                                     <action selector="addButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xKU-z3-sWg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glR-Dn-2RP">
-                                <rect key="frame" x="157" y="487" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glR-Dn-2RP">
+                                <rect key="frame" x="157" y="488" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="6qE-eF-Oeb"/>
+                                    <constraint firstAttribute="height" constant="100" id="VuY-iw-9Zp"/>
+                                </constraints>
                                 <state key="normal" image="ic_showPhotoButtonImage">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -46,9 +51,8 @@
                                     <action selector="showButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jP8-Hc-TLi"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="P H O T O   L I B R A R Y" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o74-WT-Ha4">
-                                <rect key="frame" x="71" y="119" width="272" height="108"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P H O T O   L I B R A R Y" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o74-WT-Ha4">
+                                <rect key="frame" x="71" y="117" width="272" height="108"/>
                                 <fontDescription key="fontDescription" name="ScopeOne-Regular" family="Scope One" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -56,6 +60,20 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OaW-we-bGw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="04Q-xY-SCz"/>
+                            <constraint firstItem="OOy-db-MIZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5uz-s7-B7p"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o74-WT-Ha4" secondAttribute="trailing" constant="71" id="7Y2-Vj-IMG"/>
+                            <constraint firstAttribute="bottom" secondItem="OaW-we-bGw" secondAttribute="bottom" id="as5-RB-INd"/>
+                            <constraint firstItem="OaW-we-bGw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="h3I-ts-t6j"/>
+                            <constraint firstItem="OOy-db-MIZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-80" id="hrK-H3-AcF"/>
+                            <constraint firstItem="glR-Dn-2RP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="90" id="iOl-N1-Xlp"/>
+                            <constraint firstItem="OOy-db-MIZ" firstAttribute="top" secondItem="o74-WT-Ha4" secondAttribute="bottom" constant="93" id="j66-AU-4Xn"/>
+                            <constraint firstItem="OaW-we-bGw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jTs-yX-sse"/>
+                            <constraint firstItem="o74-WT-Ha4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="73" id="mR9-wO-ifm"/>
+                            <constraint firstItem="o74-WT-Ha4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="71" id="xhg-zO-UQf"/>
+                            <constraint firstItem="glR-Dn-2RP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xnj-Uf-x7V"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="OOy-db-MIZ" id="86K-ft-rai"/>
