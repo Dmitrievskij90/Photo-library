@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction private func showButtonPressed(_ sender: UIButton) {
-        print(photoArray)
+//        print(photoArray)
     }
 
     private func displayImagePickerController() {
