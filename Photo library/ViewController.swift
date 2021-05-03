@@ -15,6 +15,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        //        print(path)
     }
 
     @IBAction private func addButtonPressed(_ sender: UIButton) {
@@ -38,13 +41,17 @@ class ViewController: UIViewController {
     }
 
     func saveImage(image: UIImage) -> String {
-        let imageData = NSData(data: image.pngData()!)
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let docs = paths[0] as NSString
-        let uuid = UUID().uuidString + ".png"
-        let fullPath = docs.appendingPathComponent(uuid)
-        _ = imageData.write(toFile: fullPath, atomically: true)
+        let uuid = UUID().uuidString + ".jpeg"
+        if let data = image.jpegData(compressionQuality: 0.8) {
+            let filename = getDocumentsDirectory().appendingPathComponent(uuid)
+            try? data.write(to: filename)
+        }
         return uuid
+    }
+
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
 }
 
