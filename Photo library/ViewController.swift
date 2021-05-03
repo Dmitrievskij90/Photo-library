@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var photoArray = [UIImage]()
+    var photoName = [String]()
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var showButton: UIButton!
 
@@ -35,12 +36,22 @@ class ViewController: UIViewController {
         // imagePicerController.allowsEditing = true
         present(imagePicerController, animated: true, completion: nil)
     }
+
+    func saveImage(image: UIImage) -> String {
+        let imageData = NSData(data: image.pngData()!)
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let docs = paths[0] as NSString
+        let uuid = UUID().uuidString + ".png"
+        let fullPath = docs.appendingPathComponent(uuid)
+        _ = imageData.write(toFile: fullPath, atomically: true)
+        return uuid
+    }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let pickedImage = info[.originalImage] as? UIImage {
-            photoArray.append(pickedImage)
+            saveImage(image: pickedImage)
         }
         dismiss(animated: true, completion: nil)
     }
