@@ -51,7 +51,7 @@
                                     <action selector="showButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jP8-Hc-TLi"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P H O T O   L I B R A R Y" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o74-WT-Ha4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P H O T O   L I B R A R Y" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="o74-WT-Ha4">
                                 <rect key="frame" x="71" y="117" width="272" height="108"/>
                                 <fontDescription key="fontDescription" name="ScopeOne-Regular" family="Scope One" pointSize="25"/>
                                 <nil key="textColor"/>
