@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C58972E2641B73800DD9911 /* UIViewController+UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C58972D2641B73800DD9911 /* UIViewController+UIAlertController.swift */; };
 		5CFF56F42635A168002216CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF56F32635A168002216CF /* AppDelegate.swift */; };
 		5CFF56F62635A168002216CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF56F52635A168002216CF /* SceneDelegate.swift */; };
 		5CFF56F82635A168002216CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF56F72635A168002216CF /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C58972D2641B73800DD9911 /* UIViewController+UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIAlertController.swift"; sourceTree = "<group>"; };
 		5CFF56F02635A168002216CF /* Photo library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CFF56F32635A168002216CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CFF56F52635A168002216CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				5CFF57012635A169002216CF /* Info.plist */,
 				5CFF570E2635BE75002216CF /* UIViewController+StoryBoardinit.swift */,
 				5CFF57122635BF73002216CF /* LoginViewController.storyboard */,
+				5C58972D2641B73800DD9911 /* UIViewController+UIAlertController.swift */,
 			);
 			path = "Photo library";
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				5CFF570F2635BE75002216CF /* UIViewController+StoryBoardinit.swift in Sources */,
 				5CFF570C2635BE06002216CF /* LoginViewController.swift in Sources */,
 				5CFF56F82635A168002216CF /* ViewController.swift in Sources */,
+				5C58972E2641B73800DD9911 /* UIViewController+UIAlertController.swift in Sources */,
 				5CFF56F42635A168002216CF /* AppDelegate.swift in Sources */,
 				5CFF56F62635A168002216CF /* SceneDelegate.swift in Sources */,
 			);
