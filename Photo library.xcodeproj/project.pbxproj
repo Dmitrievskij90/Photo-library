@@ -47,6 +47,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C5897302641B7AE00DD9911 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5CFF56F72635A168002216CF /* ViewController.swift */,
+				5CFF570B2635BE06002216CF /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5C5897312641B7E500DD9911 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				5CFF56F92635A168002216CF /* Main.storyboard */,
+				5CFF57122635BF73002216CF /* LoginViewController.storyboard */,
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
 		5CFF56E72635A168002216CF = {
 			isa = PBXGroup;
 			children = (
@@ -66,17 +84,15 @@
 		5CFF56F22635A168002216CF /* Photo library */ = {
 			isa = PBXGroup;
 			children = (
-				5CFF57152635C891002216CF /* Resources */,
 				5CFF56F32635A168002216CF /* AppDelegate.swift */,
 				5CFF56F52635A168002216CF /* SceneDelegate.swift */,
-				5CFF56F72635A168002216CF /* ViewController.swift */,
-				5CFF570B2635BE06002216CF /* LoginViewController.swift */,
-				5CFF56F92635A168002216CF /* Main.storyboard */,
+				5C5897312641B7E500DD9911 /* VIew */,
+				5C5897302641B7AE00DD9911 /* Controllers */,
+				5CFF57152635C891002216CF /* Resources */,
 				5CFF56FC2635A169002216CF /* Assets.xcassets */,
 				5CFF56FE2635A169002216CF /* LaunchScreen.storyboard */,
 				5CFF57012635A169002216CF /* Info.plist */,
 				5CFF570E2635BE75002216CF /* UIViewController+StoryBoardinit.swift */,
-				5CFF57122635BF73002216CF /* LoginViewController.storyboard */,
 				5C58972D2641B73800DD9911 /* UIViewController+UIAlertController.swift */,
 			);
 			path = "Photo library";
