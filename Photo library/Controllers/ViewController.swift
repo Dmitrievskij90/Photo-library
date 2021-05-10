@@ -17,6 +17,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        print(documentsPath)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -30,8 +31,8 @@ class ViewController: UIViewController {
 
     @IBAction private func showButtonPressed(_ sender: UIButton) {
         let viewController = LoginViewController.instantiate()
-        // viewController.modalTransitionStyle = .coverVertical
-        // viewController.modalPresentationStyle = .fullScreen
+        viewController.modalTransitionStyle = .coverVertical
+        viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: true, completion: nil)
     }
 
@@ -59,7 +60,12 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                 }
             }
             let data = image.jpegData(compressionQuality: 0.7)
-            let imageName = "\(Date().timeIntervalSince1970).png"
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy MMM dd HH:mm:ss"
+            let dataString = dateFormatter.string(from: Date())
+
+            let imageName = "\(dataString).png"
             let folderPath = "\(imagesPath.path)"
             if fileManager.createFile(atPath: "\(folderPath)/\(imageName)", contents: data, attributes: nil) {
             }
