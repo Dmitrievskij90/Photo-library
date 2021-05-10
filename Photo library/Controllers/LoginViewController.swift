@@ -8,7 +8,6 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
     private let userlogin = "Konstantin"
     private let userPassword = "20051990"
 
@@ -41,8 +40,8 @@ class LoginViewController: UIViewController {
 
         if login == userlogin, password == userPassword {
             let viewController = LibraryViewController.instantiate()
-            //            viewController.modalTransitionStyle = .coverVertical
-            //            viewController.modalPresentationStyle = .fullScreen
+            viewController.modalTransitionStyle = .coverVertical
+            viewController.modalPresentationStyle = .fullScreen
             present(viewController, animated: true, completion: nil)
         } else {
             presentOneButtonAlert(withTitle: "Error", message: "Wrong user data. Please try again")
