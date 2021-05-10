@@ -4,9 +4,13 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ScopeOne-Regular.ttf">
+            <string>ScopeOne-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Library View Controller-->
         <scene sceneID="3tr-2o-U53">
@@ -15,18 +19,51 @@
                     <view key="view" contentMode="scaleToFill" id="rpT-3h-BH4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X17-Zp-asZ">
+                                <rect key="frame" x="82" y="733.5" width="250" height="28.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2u2-eb-F0s">
+                                <rect key="frame" x="82" y="323" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="HR5-r3-VW8"/>
+                                    <constraint firstAttribute="height" constant="250" id="a51-vi-w0h"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M Y   P H O T O S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STT-5T-NC7">
+                                <rect key="frame" x="82" y="137" width="250" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2dq-68-Rb0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ScopeOne-Regular" family="Scope One" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5Ca-Nv-r2f"/>
-                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5Ca-Nv-r2f" firstAttribute="bottom" secondItem="X17-Zp-asZ" secondAttribute="bottom" constant="100" id="4t2-ri-zJP"/>
+                            <constraint firstItem="X17-Zp-asZ" firstAttribute="leading" secondItem="5Ca-Nv-r2f" secondAttribute="leading" constant="82" id="EPw-fQ-HhW"/>
+                            <constraint firstItem="5Ca-Nv-r2f" firstAttribute="trailing" secondItem="X17-Zp-asZ" secondAttribute="trailing" constant="82" id="RJw-33-mdd"/>
+                            <constraint firstItem="STT-5T-NC7" firstAttribute="leading" secondItem="5Ca-Nv-r2f" secondAttribute="leading" constant="82" id="Ty5-BN-Anz"/>
+                            <constraint firstItem="5Ca-Nv-r2f" firstAttribute="trailing" secondItem="STT-5T-NC7" secondAttribute="trailing" constant="82" id="bjW-c1-GEg"/>
+                            <constraint firstItem="2u2-eb-F0s" firstAttribute="centerX" secondItem="rpT-3h-BH4" secondAttribute="centerX" id="ew1-xo-qGP"/>
+                            <constraint firstItem="X17-Zp-asZ" firstAttribute="centerX" secondItem="rpT-3h-BH4" secondAttribute="centerX" id="fD4-Xm-6X5"/>
+                            <constraint firstItem="2u2-eb-F0s" firstAttribute="top" secondItem="STT-5T-NC7" secondAttribute="bottom" constant="126" id="r2Z-I4-M0n"/>
+                            <constraint firstItem="2u2-eb-F0s" firstAttribute="centerY" secondItem="rpT-3h-BH4" secondAttribute="centerY" id="y7v-vS-Hjx"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="commentTextField" destination="X17-Zp-asZ" id="ChY-CN-PFw"/>
+                        <outlet property="imageView" destination="2u2-eb-F0s" id="lcb-6A-FQQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8I-aP-32E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="99" y="-27"/>
+            <point key="canvasLocation" x="-191.30434782608697" y="-40.178571428571423"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>
