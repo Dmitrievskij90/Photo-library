@@ -8,10 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     private let fileManager = FileManager.default
-    private lazy var imagesPath = documentsPath.appendingPathComponent("Images")
-
+    private let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Images")
+    
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var showButton: UIButton!
 
@@ -45,16 +44,21 @@ class ViewController: UIViewController {
     }
 
     private func configureDirectory() {
-        try? fileManager.createDirectory(at: imagesPath, withIntermediateDirectories: true, attributes: nil)
+        if let path = documentsPath {
+            try? fileManager.createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
+        }
     }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let path = documentsPath?.path else {
+            return
+        }
         if let image = info [.originalImage] as? UIImage {
-            if fileManager.fileExists(atPath: imagesPath.path) == false {
+            if fileManager.fileExists(atPath: path) == false {
                 do {
-                    try fileManager.createDirectory(atPath: imagesPath.path, withIntermediateDirectories: true, attributes: nil)
+                    try fileManager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
                 } catch {
                     fatalError("Can't save image to directory")
                 }
@@ -66,7 +70,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             let dataString = dateFormatter.string(from: Date())
 
             let imageName = "\(dataString).png"
-            let folderPath = "\(imagesPath.path)"
+            let folderPath = "\(path)"
             if fileManager.createFile(atPath: "\(folderPath)/\(imageName)", contents: data, attributes: nil) {
             }
             dismiss(animated: true, completion: nil)

@@ -8,18 +8,15 @@
 import UIKit
 
 class LibraryViewController: UIViewController {
-    private let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     private let fileManager = FileManager.default
-    private lazy var imagesPath = documentsPath.appendingPathComponent("Images")
-    private lazy var commentsPath = documentsPath.appendingPathComponent("Comments")
     private let defaults = UserDefaults.standard
+    private let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Images")
     private  var imagesArray = [UIImage]()
     private var commentsArray = [String]()
     private var index = 0
 
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var commentLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +31,12 @@ class LibraryViewController: UIViewController {
 
     // MARK: - Load saved images methods
     private func loadImages() {
-        if let imageNames = try? fileManager.contentsOfDirectory(atPath: "\(imagesPath.path)") {
+        guard let path = documentsPath?.path else {
+            return
+        }
+        if let imageNames = try? fileManager.contentsOfDirectory(atPath: "\(path)") {
             for imageName in imageNames {
-                if let image = UIImage(contentsOfFile: "\(imagesPath.path)/\(imageName)") {
+                if let image = UIImage(contentsOfFile: "\(path)/\(imageName)") {
                     imagesArray.append(image)
                 }
             }
