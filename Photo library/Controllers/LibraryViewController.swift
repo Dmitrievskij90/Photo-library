@@ -29,6 +29,16 @@ class LibraryViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
+    @IBAction private func backButtonPressed(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let destinationVC = storyboard.instantiateInitialViewController() else {
+            return
+        }
+        destinationVC.modalTransitionStyle = .coverVertical
+        destinationVC.modalPresentationStyle = .fullScreen
+        present(destinationVC, animated: true, completion: nil)
+    }
+
     // MARK: - Load saved images methods
     private func loadImages() {
         guard let path = documentsPath?.path else {
