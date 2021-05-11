@@ -8,27 +8,55 @@
 import UIKit
 
 class LibraryViewController: UIViewController {
-    private  var imagesArray = [UIImage]()
     private let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     private let fileManager = FileManager.default
-    private var index = 0
     private lazy var imagesPath = documentsPath.appendingPathComponent("Images")
+    private lazy var commentsPath = documentsPath.appendingPathComponent("Comments")
+    private let defaults = UserDefaults.standard
+    private  var imagesArray = [UIImage]()
+    private var commentsArray = [String]()
+    private var index = 0
 
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var commentLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         commentTextField.delegate = self
-        createImages()
+        loadImages()
+        checkImageArray()
         addSwipeGestureRecognizer()
-
-        imageView.image = imagesArray[index]
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
+    // MARK: - Load saved images methods
+    private func loadImages() {
+        if let imageNames = try? fileManager.contentsOfDirectory(atPath: "\(imagesPath.path)") {
+            for imageName in imageNames {
+                if let image = UIImage(contentsOfFile: "\(imagesPath.path)/\(imageName)") {
+                    imagesArray.append(image)
+                }
+            }
+        }
+    }
+
+    private func checkImageArray() {
+        if imagesArray.isEmpty {
+            guard let image = UIImage(systemName: "questionmark") else {
+                return
+            }
+            imagesArray.append(image)
+            imageView.image = imagesArray[index]
+            commentTextField.isUserInteractionEnabled = false
+        } else {
+            imageView.image = imagesArray[index]
+        }
+    }
+
+    // MARK: - Methods for flipping images
     private func addSwipeGestureRecognizer() {
         let swipeGestureLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_ :)))
         let swipeGestureRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_ :)))
@@ -56,7 +84,7 @@ class LibraryViewController: UIViewController {
             }
         }
     }
-
+    
     private func checkIndex() {
         if index >= imagesArray.count {
             index = 0
@@ -65,11 +93,11 @@ class LibraryViewController: UIViewController {
         }
         upDateUI()
     }
-
+    
     private func upDateUI() {
         imageView.image = imagesArray[index]
     }
-
+    
     private func applyAnimation() {
         UIView.animate(withDuration: 1.0) {
             self.imageView.transform = CGAffineTransform(rotationAngle: .pi * 2.0)
@@ -80,6 +108,7 @@ class LibraryViewController: UIViewController {
         }
     }
 
+    // MARK: - NotificationCenter methods
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -87,26 +116,25 @@ class LibraryViewController: UIViewController {
             }
         }
     }
-
+    
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
-        }
-    }
-
-    private func createImages() {
-        if let imageNames = try? fileManager.contentsOfDirectory(atPath: "\(imagesPath.path)") {
-            for imageName in imageNames {
-                if let image = UIImage(contentsOfFile: "\(imagesPath.path)/\(imageName)") {
-                    imagesArray.append(image)
-                }
-            }
         }
     }
 }
 
 extension LibraryViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let comment = textField.text {
+            if textField.text == "" {
+                textField.resignFirstResponder()
+            } else {
+                commentsArray.append(comment)
+            }
+        }
+        defaults.setValue(commentsArray, forKey: "Comments")
+        textField.text = ""
         textField.resignFirstResponder()
         return true
     }
