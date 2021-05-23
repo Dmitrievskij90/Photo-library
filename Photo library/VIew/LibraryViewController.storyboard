@@ -28,7 +28,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="M Y   P H O T O S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STT-5T-NC7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M Y   P H O T O S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STT-5T-NC7">
                                 <rect key="frame" x="82" y="137" width="250" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="2dq-68-Rb0"/>
@@ -52,9 +52,8 @@
                                     <action selector="backButtonPressed:" destination="tnh-oe-bD6" eventType="touchUpInside" id="Pri-OZ-lXn"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E6Z-z9-Nzr">
-                                <rect key="frame" x="92" y="384" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E6Z-z9-Nzr">
+                                <rect key="frame" x="0.0" y="224" width="414" height="448"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="plt-rc-1Hi">
                                     <size key="itemSize" width="128" height="128"/>
@@ -64,7 +63,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="x5x-BD-KuU">
-                                        <rect key="frame" x="56" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mHM-8F-bbN">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -77,11 +76,16 @@
                         <viewLayoutGuide key="safeArea" id="5Ca-Nv-r2f"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="E6Z-z9-Nzr" firstAttribute="centerY" secondItem="rpT-3h-BH4" secondAttribute="centerY" id="1KW-ak-BAp"/>
                             <constraint firstItem="5Ca-Nv-r2f" firstAttribute="bottom" secondItem="X17-Zp-asZ" secondAttribute="bottom" constant="100" id="4t2-ri-zJP"/>
                             <constraint firstItem="X17-Zp-asZ" firstAttribute="leading" secondItem="5Ca-Nv-r2f" secondAttribute="leading" constant="82" id="EPw-fQ-HhW"/>
+                            <constraint firstItem="E6Z-z9-Nzr" firstAttribute="top" secondItem="STT-5T-NC7" secondAttribute="bottom" constant="27" id="JPT-CX-vfb"/>
+                            <constraint firstItem="STT-5T-NC7" firstAttribute="top" secondItem="5Ca-Nv-r2f" secondAttribute="top" constant="93" id="R4X-Gi-Q7X"/>
                             <constraint firstItem="5Ca-Nv-r2f" firstAttribute="trailing" secondItem="X17-Zp-asZ" secondAttribute="trailing" constant="82" id="RJw-33-mdd"/>
                             <constraint firstItem="STT-5T-NC7" firstAttribute="leading" secondItem="5Ca-Nv-r2f" secondAttribute="leading" constant="82" id="Ty5-BN-Anz"/>
+                            <constraint firstItem="E6Z-z9-Nzr" firstAttribute="trailing" secondItem="5Ca-Nv-r2f" secondAttribute="trailing" id="TzY-kf-jBm"/>
                             <constraint firstItem="eCc-Md-cIq" firstAttribute="leading" secondItem="5Ca-Nv-r2f" secondAttribute="leading" constant="20" id="UmZ-qZ-Ia6"/>
+                            <constraint firstItem="E6Z-z9-Nzr" firstAttribute="leading" secondItem="5Ca-Nv-r2f" secondAttribute="leading" id="Vsy-Zz-zPo"/>
                             <constraint firstItem="5Ca-Nv-r2f" firstAttribute="trailing" secondItem="STT-5T-NC7" secondAttribute="trailing" constant="82" id="bjW-c1-GEg"/>
                             <constraint firstItem="X17-Zp-asZ" firstAttribute="centerX" secondItem="rpT-3h-BH4" secondAttribute="centerX" id="fD4-Xm-6X5"/>
                             <constraint firstItem="eCc-Md-cIq" firstAttribute="top" secondItem="5Ca-Nv-r2f" secondAttribute="top" id="zAz-5E-ZvP"/>
