@@ -56,7 +56,7 @@ class LibraryViewController: UIViewController {
     private func checkImageArray() {
         if imagesArray.isEmpty {
             guard let image = UIImage(systemName: "questionmark") else {
-                return
+                fatalError("Can not find image")
             }
             imagesArray.append(image)
             imageView.image = imagesArray[index]
