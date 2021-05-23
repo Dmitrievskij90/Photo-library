@@ -17,13 +17,15 @@ class LibraryViewController: UIViewController {
 
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
         commentTextField.delegate = self
         loadImages()
         checkImageArray()
-        addSwipeGestureRecognizer()
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -66,58 +68,6 @@ class LibraryViewController: UIViewController {
         }
     }
 
-    // MARK: - Methods for flipping images
-    private func addSwipeGestureRecognizer() {
-        let swipeGestureLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_ :)))
-        let swipeGestureRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_ :)))
-        swipeGestureLeft.direction = .left
-        swipeGestureRight.direction = .right
-        view.addGestureRecognizer(swipeGestureLeft)
-        view.addGestureRecognizer(swipeGestureRight)
-    }
-
-    @objc func handleSwipe(_ sender: UISwipeGestureRecognizer) {
-        if sender.state == .ended {
-            switch sender.direction {
-            case .left:
-                index += 1
-                checkIndex()
-                imageView.transform = CGAffineTransform(translationX: 300, y: 0)
-                applyAnimation()
-            case .right:
-                index -= 1
-                checkIndex()
-                imageView.transform = CGAffineTransform(translationX: -300, y: 0)
-                applyAnimation()
-            default:
-                break
-            }
-        }
-    }
-    
-    private func checkIndex() {
-        if index >= imagesArray.count {
-            index = 0
-        } else if index <= -1 {
-            index = imagesArray.count - 1
-        }
-        upDateUI()
-    }
-    
-    private func upDateUI() {
-        imageView.image = imagesArray[index]
-    }
-    
-    private func applyAnimation() {
-        UIView.animate(withDuration: 1.0) {
-            self.imageView.transform = CGAffineTransform(rotationAngle: .pi * 2.0)
-        } completion: { _ in
-            UIView.animate(withDuration: 0.3) {
-                self.imageView.transform = CGAffineTransform.identity.scaledBy(x: 1.5, y: 1.5)
-            }
-        }
-    }
-
     // MARK: - NotificationCenter methods
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -152,4 +102,16 @@ extension LibraryViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+}
+
+extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+
+    
 }

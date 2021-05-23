@@ -71,8 +71,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 
             let imageName = "\(dataString).png"
             let folderPath = "\(path)"
-            if fileManager.createFile(atPath: "\(folderPath)/\(imageName)", contents: data, attributes: nil) {
-            }
+            fileManager.createFile(atPath: "\(folderPath)/\(imageName)", contents: data, attributes: nil)
             dismiss(animated: true, completion: nil)
         }
     }
