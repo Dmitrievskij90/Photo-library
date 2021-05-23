@@ -71,6 +71,15 @@
 			path = VIew;
 			sourceTree = "<group>";
 		};
+		5C5CC0E2265A62A000A73F6B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5CFF570E2635BE75002216CF /* UIViewController+StoryBoardinit.swift */,
+				5C58972D2641B73800DD9911 /* UIViewController+UIAlertController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		5CFF56E72635A168002216CF = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +107,7 @@
 				5CFF56FC2635A169002216CF /* Assets.xcassets */,
 				5CFF56FE2635A169002216CF /* LaunchScreen.storyboard */,
 				5CFF57012635A169002216CF /* Info.plist */,
-				5CFF570E2635BE75002216CF /* UIViewController+StoryBoardinit.swift */,
-				5C58972D2641B73800DD9911 /* UIViewController+UIAlertController.swift */,
+				5C5CC0E2265A62A000A73F6B /* Extensions */,
 			);
 			path = "Photo library";
 			sourceTree = "<group>";
