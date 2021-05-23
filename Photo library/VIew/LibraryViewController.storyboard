@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tnh-oe-bD6">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ScopeOne-Regular.ttf">
+            <string>ScopeOne-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Library View Controller-->
+        <scene sceneID="3tr-2o-U53">
+            <objects>
+                <viewController id="tnh-oe-bD6" customClass="LibraryViewController" customModule="Photo_library" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rpT-3h-BH4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X17-Zp-asZ">
+                                <rect key="frame" x="82" y="733.5" width="250" height="28.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2u2-eb-F0s">
+                                <rect key="frame" x="82" y="323" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="HR5-r3-VW8"/>
+                                    <constraint firstAttribute="height" constant="250" id="a51-vi-w0h"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M Y   P H O T O S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STT-5T-NC7">
+                                <rect key="frame" x="82" y="137" width="250" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2dq-68-Rb0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ScopeOne-Regular" family="Scope One" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCc-Md-cIq">
+                                <rect key="frame" x="20" y="44" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3LZ-v3-7gN"/>
+                                    <constraint firstAttribute="width" constant="50" id="HIa-Me-03x"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button">
+                                    <imageReference key="image" image="chevron.backward.circle.fill" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="tnh-oe-bD6" eventType="touchUpInside" id="Pri-OZ-lXn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5Ca-Nv-r2f"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5Ca-Nv-r2f" firstAttribute="bottom" secondItem="X17-Zp-asZ" secondAttribute="bottom" constant="100" id="4t2-ri-zJP"/>
+                            <constraint firstItem="X17-Zp-asZ" firstAttribute="leading" secondItem="5Ca-Nv-r2f" secondAttribute="leading" constant="82" id="EPw-fQ-HhW"/>
+                            <constraint firstItem="5Ca-Nv-r2f" firstAttribute="trailing" secondItem="X17-Zp-asZ" secondAttribute="trailing" constant="82" id="RJw-33-mdd"/>
+                            <constraint firstItem="STT-5T-NC7" firstAttribute="leading" secondItem="5Ca-Nv-r2f" secondAttribute="leading" constant="82" id="Ty5-BN-Anz"/>
+                            <constraint firstItem="eCc-Md-cIq" firstAttribute="leading" secondItem="5Ca-Nv-r2f" secondAttribute="leading" constant="20" id="UmZ-qZ-Ia6"/>
+                            <constraint firstItem="5Ca-Nv-r2f" firstAttribute="trailing" secondItem="STT-5T-NC7" secondAttribute="trailing" constant="82" id="bjW-c1-GEg"/>
+                            <constraint firstItem="2u2-eb-F0s" firstAttribute="centerX" secondItem="rpT-3h-BH4" secondAttribute="centerX" id="ew1-xo-qGP"/>
+                            <constraint firstItem="X17-Zp-asZ" firstAttribute="centerX" secondItem="rpT-3h-BH4" secondAttribute="centerX" id="fD4-Xm-6X5"/>
+                            <constraint firstItem="2u2-eb-F0s" firstAttribute="top" secondItem="STT-5T-NC7" secondAttribute="bottom" constant="126" id="r2Z-I4-M0n"/>
+                            <constraint firstItem="2u2-eb-F0s" firstAttribute="centerY" secondItem="rpT-3h-BH4" secondAttribute="centerY" id="y7v-vS-Hjx"/>
+                            <constraint firstItem="eCc-Md-cIq" firstAttribute="top" secondItem="5Ca-Nv-r2f" secondAttribute="top" id="zAz-5E-ZvP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentTextField" destination="X17-Zp-asZ" id="ChY-CN-PFw"/>
+                        <outlet property="imageView" destination="2u2-eb-F0s" id="lcb-6A-FQQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y8I-aP-32E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-191.30434782608697" y="-40.178571428571423"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
+</document>
