@@ -25,7 +25,9 @@ class LibraryViewController: UIViewController {
         collectionView.dataSource = self
         commentTextField.delegate = self
         loadImages()
-        checkImageArray()
+//        checkImageArray()
+
+        collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "cell")
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -55,18 +57,18 @@ class LibraryViewController: UIViewController {
         }
     }
 
-    private func checkImageArray() {
-        if imagesArray.isEmpty {
-            guard let image = UIImage(systemName: "questionmark") else {
-                fatalError("Can not find image")
-            }
-            imagesArray.append(image)
-            imageView.image = imagesArray[index]
-            commentTextField.isUserInteractionEnabled = false
-        } else {
-            imageView.image = imagesArray[index]
-        }
-    }
+//    private func checkImageArray() {
+//        if imagesArray.isEmpty {
+//            guard let image = UIImage(systemName: "questionmark") else {
+//                fatalError("Can not find image")
+//            }
+//            imagesArray.append(image)
+//            imageView.image = imagesArray[index]
+//            commentTextField.isUserInteractionEnabled = false
+//        } else {
+//            imageView.image = imagesArray[index]
+//        }
+//    }
 
     // MARK: - NotificationCenter methods
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -106,12 +108,12 @@ extension LibraryViewController: UITextFieldDelegate {
 
 extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        imagesArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CustomCollectionViewCell else { return UICollectionViewCell()
+        }
+        return cell
     }
-
-    
 }
