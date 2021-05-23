@@ -55,6 +55,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C0D376B265A69DB00403CDF /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5CFF56F92635A168002216CF /* Main.storyboard */,
+				5CFF57122635BF73002216CF /* LoginViewController.storyboard */,
+				5C5897362641C68E00DD9911 /* LibraryViewController.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		5C5897302641B7AE00DD9911 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -69,9 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				5C5CC0EB265A686500A73F6B /* Custom cell */,
-				5CFF56F92635A168002216CF /* Main.storyboard */,
-				5CFF57122635BF73002216CF /* LoginViewController.storyboard */,
-				5C5897362641C68E00DD9911 /* LibraryViewController.storyboard */,
+				5C0D376B265A69DB00403CDF /* Storyboards */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
