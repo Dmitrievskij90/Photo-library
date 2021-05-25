@@ -14,7 +14,7 @@ class LibraryViewController: UIViewController {
     private  var imagesArray = [UIImage]()
     private var commentsArray = [String]()
     private var index = 0
-    private let leftInset: CGFloat = 40
+    private let leftInset: CGFloat = 20
     private let topInset: CGFloat = 0
 
     @IBOutlet weak var commentTextField: UITextField!
@@ -126,16 +126,14 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 80, height: collectionView.bounds.height)
+        return CGSize(width: collectionView.bounds.width / 1.5, height: collectionView.bounds.height / 2)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: topInset, left: 40, bottom: topInset, right: 40)
+        return UIEdgeInsets(top: topInset, left: leftInset, bottom: topInset, right: leftInset)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 40
+        return 10
     }
-
 }
-
