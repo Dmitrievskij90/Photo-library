@@ -18,7 +18,6 @@ class LibraryViewController: UIViewController {
     private let topInset: CGFloat = 0
 
     @IBOutlet weak var commentTextField: UITextField!
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -27,7 +26,7 @@ class LibraryViewController: UIViewController {
         collectionView.dataSource = self
         commentTextField.delegate = self
         loadImages()
-//        checkImageArray()
+        checkImageArray()
 
         collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "cell")
 
@@ -59,18 +58,11 @@ class LibraryViewController: UIViewController {
         }
     }
 
-//    private func checkImageArray() {
-//        if imagesArray.isEmpty {
-//            guard let image = UIImage(systemName: "questionmark") else {
-//                fatalError("Can not find image")
-//            }
-//            imagesArray.append(image)
-//            imageView.image = imagesArray[index]
-//            commentTextField.isUserInteractionEnabled = false
-//        } else {
-//            imageView.image = imagesArray[index]
-//        }
-//    }
+    private func checkImageArray() {
+        if imagesArray.isEmpty {
+            commentTextField.isUserInteractionEnabled = false
+        }
+    }
 
     // MARK: - NotificationCenter methods
     @objc func keyboardWillShow(notification: NSNotification) {
