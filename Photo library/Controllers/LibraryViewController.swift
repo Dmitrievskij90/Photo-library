@@ -34,6 +34,10 @@ class LibraryViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        loadImages()
+        collectionView.reloadData()
+    }
     @IBAction private func backButtonPressed(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let destinationVC = storyboard.instantiateInitialViewController() else {
