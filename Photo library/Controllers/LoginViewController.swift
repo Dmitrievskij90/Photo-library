@@ -32,10 +32,10 @@ class LoginViewController: UIViewController {
 
     private func validateCredentials() {
         guard let login = loginTextField.text else {
-            return
+            fatalError("Wrong login")
         }
         guard let password = passwordTextField.text else {
-            return
+            fatalError("Wrong password")
         }
 
         if login == userlogin, password == userPassword {
