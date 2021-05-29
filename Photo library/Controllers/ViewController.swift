@@ -9,14 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
     private let fileManager = FileManager.default
-    private let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Images")
-    
+    private let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("Images")
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var showButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(documentsPath)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +37,6 @@ class ViewController: UIViewController {
         let imagePicerController = UIImagePickerController()
         imagePicerController.delegate = self
         imagePicerController.sourceType = .photoLibrary
-        // imagePicerController.allowsEditing = true
         present(imagePicerController, animated: true, completion: nil)
     }
 
@@ -48,12 +45,19 @@ class ViewController: UIViewController {
             try? fileManager.createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
         }
     }
+
+    private func getCurrentDate(_ dateFormat: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormat
+        let dataString = dateFormatter.string(from: Date())
+        return dataString
+    }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let path = documentsPath?.path else {
-            return
+            fatalError("Can't find document path")
         }
         if let image = info [.originalImage] as? UIImage {
             if fileManager.fileExists(atPath: path) == false {
@@ -63,16 +67,12 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                     fatalError("Can't save image to directory")
                 }
             }
-            let data = image.jpegData(compressionQuality: 0.7)
-
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy MMM dd HH:mm:ss"
-            let dataString = dateFormatter.string(from: Date())
-
-            let imageName = "\(dataString).png"
-            let folderPath = "\(path)"
-            fileManager.createFile(atPath: "\(folderPath)/\(imageName)", contents: data, attributes: nil)
-            dismiss(animated: true, completion: nil)
+            let data = image.jpegData(compressionQuality: 0.5)
+            let imageName = "\(getCurrentDate("yyyy MMM dd HH:mm:ss")).png"
+            fileManager.createFile(atPath: "\(path)/\(imageName)", contents: data, attributes: nil)
+        } else {
+            fatalError("Can't find image")
         }
+        dismiss(animated: true, completion: nil)
     }
 }
