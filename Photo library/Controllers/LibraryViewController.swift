@@ -31,9 +31,12 @@ class LibraryViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadImages()
+        checkImageArray()
         collectionView.reloadData()
     }
+
     @IBAction private func backButtonPressed(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let destinationVC = storyboard.instantiateInitialViewController() else {
@@ -80,6 +83,7 @@ class LibraryViewController: UIViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate methods
 extension LibraryViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let comment = textField.text {
@@ -100,6 +104,7 @@ extension LibraryViewController: UITextFieldDelegate {
     }
 }
 
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  methods
 extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         imagesArray.count
@@ -110,22 +115,28 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
             return UICollectionViewCell()
         }
 
-        cell.layer.cornerRadius = 10
-        cell.imageView.image = imagesArray[indexPath.item]
-        cell.imageView.contentMode = .scaleAspectFill
-
+        DispatchQueue.main.async {
+            cell.layer.cornerRadius = 10
+            UIView.animate(withDuration: 3.0) {
+                cell.imageView.alpha = 1
+            }
+            cell.imageView.image = self.imagesArray[indexPath.item]
+            cell.imageView.contentMode = .scaleAspectFill
+        }
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width / 1.5, height: collectionView.bounds.height / 2)
+        return CGSize(width: (view.frame.width / 2) - 10, height: (view.frame.width / 2) - 10)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: topInset, left: leftInset, bottom: topInset, right: leftInset)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedImageViewController = FullScreenPhotoViewController.instantiate()
+        present(selectedImageViewController, animated: true, completion: nil)
+        selectedImageViewController.fullImageView.image = imagesArray[indexPath.item]
     }
 }
