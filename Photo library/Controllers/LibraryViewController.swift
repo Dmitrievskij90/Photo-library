@@ -10,13 +10,11 @@ import UIKit
 class LibraryViewController: UIViewController {
     private let fileManager = FileManager.default
     private let defaults = UserDefaults.standard
-    private let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Images")
+    private let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("Images")
     private  var imagesArray = [UIImage]()
     private var commentsArray = [String]()
-    private var index = 0
-    private let leftInset: CGFloat = 20
+    private let leftInset: CGFloat = 5
     private let topInset: CGFloat = 0
-
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -25,8 +23,6 @@ class LibraryViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         commentTextField.delegate = self
-        loadImages()
-        checkImageArray()
 
         collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "cell")
 
@@ -51,7 +47,7 @@ class LibraryViewController: UIViewController {
     // MARK: - Load saved images methods
     private func loadImages() {
         guard let path = documentsPath?.path else {
-            return
+            fatalError("Can't find document path")
         }
         if let imageNames = try? fileManager.contentsOfDirectory(atPath: "\(path)") {
             for imageName in imageNames {
