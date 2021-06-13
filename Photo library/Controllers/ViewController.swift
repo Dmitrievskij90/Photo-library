@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     private let fileManager = FileManager.default
     private let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("Images")
+    private lazy var dateFormatter = DateFormatter()
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var showButton: UIButton!
 
@@ -47,7 +48,6 @@ class ViewController: UIViewController {
     }
 
     private func getCurrentDate(_ dateFormat: String) -> String {
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
         let dataString = dateFormatter.string(from: Date())
         return dataString
