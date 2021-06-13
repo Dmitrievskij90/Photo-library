@@ -10,23 +10,31 @@ import UIKit
 class LibraryViewController: UIViewController {
     private let fileManager = FileManager.default
     private let defaults = UserDefaults.standard
-    private let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Images")
+    private let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("Images")
     private  var imagesArray = [UIImage]()
     private var commentsArray = [String]()
-    private var index = 0
-
+    private let leftInset: CGFloat = 5
+    private let topInset: CGFloat = 0
     @IBOutlet weak var commentTextField: UITextField!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
         commentTextField.delegate = self
-        loadImages()
-        checkImageArray()
-        addSwipeGestureRecognizer()
+
+        collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "cell")
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadImages()
+        checkImageArray()
+        collectionView.reloadData()
     }
 
     @IBAction private func backButtonPressed(_ sender: UIButton) {
@@ -42,7 +50,7 @@ class LibraryViewController: UIViewController {
     // MARK: - Load saved images methods
     private func loadImages() {
         guard let path = documentsPath?.path else {
-            return
+            fatalError("Can't find document path")
         }
         if let imageNames = try? fileManager.contentsOfDirectory(atPath: "\(path)") {
             for imageName in imageNames {
@@ -55,66 +63,7 @@ class LibraryViewController: UIViewController {
 
     private func checkImageArray() {
         if imagesArray.isEmpty {
-            guard let image = UIImage(systemName: "questionmark") else {
-                return
-            }
-            imagesArray.append(image)
-            imageView.image = imagesArray[index]
             commentTextField.isUserInteractionEnabled = false
-        } else {
-            imageView.image = imagesArray[index]
-        }
-    }
-
-    // MARK: - Methods for flipping images
-    private func addSwipeGestureRecognizer() {
-        let swipeGestureLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_ :)))
-        let swipeGestureRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_ :)))
-        swipeGestureLeft.direction = .left
-        swipeGestureRight.direction = .right
-        view.addGestureRecognizer(swipeGestureLeft)
-        view.addGestureRecognizer(swipeGestureRight)
-    }
-
-    @objc func handleSwipe(_ sender: UISwipeGestureRecognizer) {
-        if sender.state == .ended {
-            switch sender.direction {
-            case .left:
-                index += 1
-                checkIndex()
-                imageView.transform = CGAffineTransform(translationX: 300, y: 0)
-                applyAnimation()
-            case .right:
-                index -= 1
-                checkIndex()
-                imageView.transform = CGAffineTransform(translationX: -300, y: 0)
-                applyAnimation()
-            default:
-                break
-            }
-        }
-    }
-    
-    private func checkIndex() {
-        if index >= imagesArray.count {
-            index = 0
-        } else if index <= -1 {
-            index = imagesArray.count - 1
-        }
-        upDateUI()
-    }
-    
-    private func upDateUI() {
-        imageView.image = imagesArray[index]
-    }
-    
-    private func applyAnimation() {
-        UIView.animate(withDuration: 1.0) {
-            self.imageView.transform = CGAffineTransform(rotationAngle: .pi * 2.0)
-        } completion: { _ in
-            UIView.animate(withDuration: 0.3) {
-                self.imageView.transform = CGAffineTransform.identity.scaledBy(x: 1.5, y: 1.5)
-            }
         }
     }
 
@@ -134,6 +83,7 @@ class LibraryViewController: UIViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate methods
 extension LibraryViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let comment = textField.text {
@@ -151,5 +101,42 @@ extension LibraryViewController: UITextFieldDelegate {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+}
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  methods
+extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        imagesArray.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CustomCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+
+        DispatchQueue.main.async {
+            cell.layer.cornerRadius = 10
+            UIView.animate(withDuration: 3.0) {
+                cell.imageView.alpha = 1
+            }
+            cell.imageView.image = self.imagesArray[indexPath.item]
+            cell.imageView.contentMode = .scaleAspectFill
+        }
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (view.frame.width / 2) - 10, height: (view.frame.width / 2) - 10)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: topInset, left: leftInset, bottom: topInset, right: leftInset)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedImageViewController = FullScreenPhotoViewController.instantiate()
+        present(selectedImageViewController, animated: true, completion: nil)
+        selectedImageViewController.fullImageView.image = imagesArray[indexPath.item]
     }
 }
