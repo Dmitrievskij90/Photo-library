@@ -9,8 +9,7 @@ import KeychainAccess
 import UIKit
 
 class LoginViewController: UIViewController {
-    private let userlogin = "Konstantin"
-    private let userPassword = "20051990"
+    private let keychain = Keychain()
 
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -18,7 +17,6 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         loginTextField.delegate = self
         passwordTextField.delegate = self
     }
@@ -39,7 +37,7 @@ class LoginViewController: UIViewController {
             fatalError("Wrong password")
         }
 
-        if login == userlogin, password == userPassword {
+        if KeychainManager.shared.userLogin == login, KeychainManager.shared.userPassword == password {
             let viewController = LibraryViewController.instantiate()
             viewController.modalTransitionStyle = .coverVertical
             viewController.modalPresentationStyle = .fullScreen
