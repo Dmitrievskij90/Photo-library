@@ -28,10 +28,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction private func showButtonPressed(_ sender: UIButton) {
-        let viewController = LoginViewController.instantiate()
-        viewController.modalTransitionStyle = .coverVertical
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true, completion: nil)
+        presentRegisterAlert(withTitle: "Please register or sign in", message: "")
+//        let viewController = LoginViewController.instantiate()
+//        viewController.modalTransitionStyle = .coverVertical
+//        viewController.modalPresentationStyle = .fullScreen
+//        present(viewController, animated: true, completion: nil)
     }
 
     private func displayImagePickerController() {
