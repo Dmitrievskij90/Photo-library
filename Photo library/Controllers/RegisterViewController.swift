@@ -12,7 +12,8 @@ class RegisterViewController: UIViewController {
     private let keychain = Keychain()
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-
+    @IBOutlet weak var repeatPasswordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loginTextField.delegate = self
@@ -35,8 +36,14 @@ class RegisterViewController: UIViewController {
             fatalError("Wrong password")
         }
 
+        guard let repeatPassword = repeatPasswordTextField.text else {
+            fatalError("Wrong password")
+        }
+
         if login.isEmpty || password.isEmpty {
             presentOneButtonAlert(withTitle: "Empty field", message: "Please enter user data")
+        } else if password != repeatPassword {
+            presentOneButtonAlert(withTitle: "Passwords don't match", message: "Please check the spelling and try again")
         } else {
             KeychainManager.shared.setUserCredentials(login: login, password: password)
             presentLibraryViewController()
