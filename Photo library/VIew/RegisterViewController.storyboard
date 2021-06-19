@@ -25,39 +25,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aa-3x-2cH">
-                                <rect key="frame" x="20" y="44" width="54" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="B4L-ia-qob"/>
-                                    <constraint firstAttribute="width" constant="54" id="ShR-Dq-FAr"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="tintColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <imageReference key="image" image="chevron.backward.circle.fill" catalog="system" symbolScale="large"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
-                                </state>
-                                <connections>
-                                    <action selector="backButtonPressed:" destination="kFW-1R-jYM" eventType="touchUpInside" id="MTt-OX-mYx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCp-LX-8H5">
-                                <rect key="frame" x="132" y="592" width="150" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="cGF-Rx-NnX"/>
-                                    <constraint firstAttribute="width" constant="150" id="msF-hG-6D6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="ScopeOne-Regular" family="Scope One" pointSize="26"/>
-                                <state key="normal" title="REGISTER">
-                                    <color key="titleColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="registerButtonPressed:" destination="kFW-1R-jYM" eventType="touchUpInside" id="k9F-wX-67C"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="GNl-35-Oue">
-                                <rect key="frame" x="50" y="144" width="314" height="345"/>
+                                <rect key="frame" x="50" y="124" width="314" height="440"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOGIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="o8F-w5-hRu">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="36"/>
@@ -92,17 +61,62 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                     </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="kbZ-H6-UBF">
+                                        <rect key="frame" x="0.0" y="372" width="314" height="68"/>
+                                        <subviews>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VeW-HG-1a8">
+                                                <rect key="frame" x="0.0" y="0.0" width="316" height="31"/>
+                                                <color key="onTintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </switch>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbf-Wz-ibq">
+                                                <rect key="frame" x="0.0" y="44" width="314" height="24"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="20"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aa-3x-2cH">
+                                <rect key="frame" x="20" y="44" width="54" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="B4L-ia-qob"/>
+                                    <constraint firstAttribute="width" constant="54" id="ShR-Dq-FAr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="tintColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="chevron.backward.circle.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="kFW-1R-jYM" eventType="touchUpInside" id="MTt-OX-mYx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCp-LX-8H5">
+                                <rect key="frame" x="147" y="614" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="JU0-vf-CZM"/>
+                                    <constraint firstAttribute="height" constant="120" id="imK-Hw-cve"/>
+                                </constraints>
+                                <state key="normal" image="ic_registerButton">
+                                    <color key="titleColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerButtonPressed:" destination="kFW-1R-jYM" eventType="touchUpInside" id="k9F-wX-67C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9cd-Xd-onP"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9cd-Xd-onP" firstAttribute="bottom" secondItem="bCp-LX-8H5" secondAttribute="bottom" constant="170" id="4Y5-Tg-Jos"/>
                             <constraint firstItem="7aa-3x-2cH" firstAttribute="top" secondItem="9cd-Xd-onP" secondAttribute="top" id="Ale-Ue-91L"/>
-                            <constraint firstItem="bCp-LX-8H5" firstAttribute="centerX" secondItem="AaO-6x-MmV" secondAttribute="centerX" id="ETi-aI-CJy"/>
+                            <constraint firstItem="bCp-LX-8H5" firstAttribute="centerX" secondItem="AaO-6x-MmV" secondAttribute="centerX" id="JrN-wl-qKV"/>
                             <constraint firstItem="GNl-35-Oue" firstAttribute="centerX" secondItem="AaO-6x-MmV" secondAttribute="centerX" id="KTV-qr-oBk"/>
-                            <constraint firstItem="GNl-35-Oue" firstAttribute="top" secondItem="9cd-Xd-onP" secondAttribute="top" constant="100" id="Ugv-5B-L2w"/>
+                            <constraint firstItem="GNl-35-Oue" firstAttribute="top" secondItem="9cd-Xd-onP" secondAttribute="top" constant="80" id="Ugv-5B-L2w"/>
+                            <constraint firstItem="bCp-LX-8H5" firstAttribute="top" secondItem="GNl-35-Oue" secondAttribute="bottom" constant="50" id="Xyt-b7-5gB"/>
                             <constraint firstItem="GNl-35-Oue" firstAttribute="leading" secondItem="9cd-Xd-onP" secondAttribute="leading" constant="50" id="cCa-it-4am"/>
                             <constraint firstItem="7aa-3x-2cH" firstAttribute="leading" secondItem="9cd-Xd-onP" secondAttribute="leading" constant="20" id="lnN-CR-4oD"/>
                             <constraint firstItem="9cd-Xd-onP" firstAttribute="trailing" secondItem="GNl-35-Oue" secondAttribute="trailing" constant="50" id="oiJ-G4-bxf"/>
@@ -111,6 +125,7 @@
                     <connections>
                         <outlet property="loginTextField" destination="kOB-qT-XhX" id="y5R-Iu-rcn"/>
                         <outlet property="passwordTextField" destination="eGQ-qS-zXR" id="rQD-M3-28l"/>
+                        <outlet property="rememberSwitch" destination="VeW-HG-1a8" id="B8s-te-8GW"/>
                         <outlet property="repeatPasswordTextField" destination="aif-Bc-LTN" id="5iB-aR-tTa"/>
                     </connections>
                 </viewController>
@@ -121,6 +136,7 @@
     </scenes>
     <resources>
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="ic_registerButton" width="150" height="150"/>
         <image name="ic_registerVCBackground" width="1474.5" height="2273.5"/>
     </resources>
 </document>
