@@ -28,7 +28,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction private func showButtonPressed(_ sender: UIButton) {
-        presentRegisterAlert(withTitle: "Please register or sign in", message: "")
+        if !KeychainManager.shared.isUserSignedIn.isEmpty {
+            presentLibraryViewController()
+        } else {
+            presentRegisterAlert(withTitle: "Please register or sign in", message: "")
+        }
     }
 
     private func displayImagePickerController() {
@@ -48,6 +52,13 @@ class ViewController: UIViewController {
         dateFormatter.dateFormat = dateFormat
         let dataString = dateFormatter.string(from: Date())
         return dataString
+    }
+
+    private func presentLibraryViewController() {
+        let viewController = LibraryViewController.instantiate()
+        viewController.modalTransitionStyle = .coverVertical
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true, completion: nil)
     }
 }
 
