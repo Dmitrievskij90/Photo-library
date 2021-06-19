@@ -41,6 +41,10 @@ class RegisterViewController: UIViewController {
             fatalError("Wrong password")
         }
 
+        if rememberSwitch.isOn {
+            KeychainManager.shared.keepUserSignedIn()
+        }
+
         if login.isEmpty || password.isEmpty {
             presentOneButtonAlert(withTitle: "Empty field", message: "Please enter user data")
         } else if password != repeatPassword {
