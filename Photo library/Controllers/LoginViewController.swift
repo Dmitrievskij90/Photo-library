@@ -14,7 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var verifyButton: UIButton!
-
+    @IBOutlet weak var rememberSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loginTextField.delegate = self
@@ -35,6 +36,10 @@ class LoginViewController: UIViewController {
         }
         guard let password = passwordTextField.text else {
             fatalError("Wrong password")
+        }
+
+        if rememberSwitch.isOn {
+            KeychainManager.shared.keepUserSignedIn()
         }
 
         if KeychainManager.shared.userLogin == login, KeychainManager.shared.userPassword == password {
