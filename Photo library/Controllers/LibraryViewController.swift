@@ -4,6 +4,7 @@
 //
 //  Created by Konstantin Dmitrievskiy on 05.05.2021.
 //
+import KeychainAccess
 import UIKit
 
 class LibraryViewController: UIViewController {
@@ -14,8 +15,10 @@ class LibraryViewController: UIViewController {
     private var commentsArray = [String]()
     private let leftInset: CGFloat = 5
     private let topInset: CGFloat = 0
+    private let keychain = Keychain()
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var logOutButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,8 @@ class LibraryViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        logOutButton.layer.cornerRadius = 10
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +39,16 @@ class LibraryViewController: UIViewController {
         loadImages()
         checkImageArray()
         collectionView.reloadData()
+    }
+    @IBAction private func logOutButtonPressed(_ sender: UIButton) {
+        keychain["remember"] = nil
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let destinationVC = storyboard.instantiateInitialViewController() else {
+            return
+        }
+        destinationVC.modalTransitionStyle = .coverVertical
+        destinationVC.modalPresentationStyle = .fullScreen
+        present(destinationVC, animated: true, completion: nil)
     }
 
     @IBAction private func backButtonPressed(_ sender: UIButton) {
