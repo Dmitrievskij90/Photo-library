@@ -25,7 +25,18 @@ class KeychainManager {
         return userPassword
     }
 
+    var isUserSignedIn: String {
+        guard let rememberUser = try? keychain.get("remember") else {
+            return ""
+        }
+        return rememberUser
+    }
+
     private let keychain = Keychain()
+
+    func keepUserSignedIn() {
+        keychain["remember"] = "yes"
+    }
 
     func setUserCredentials(login: String, password: String) {
         keychain["login"] = login
