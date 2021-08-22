@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="height" constant="100" id="v7g-6A-SVI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" image="ic_plus1">
+                                <state key="normal" image="ic_plusButton">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -87,7 +87,7 @@
     </scenes>
     <resources>
         <image name="ic_background" width="636" height="955.5"/>
-        <image name="ic_plus1" width="150" height="150"/>
+        <image name="ic_plusButton" width="150" height="150"/>
         <image name="ic_showPhotoButtonImage" width="150" height="150"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -30,4 +30,32 @@ extension UIViewController {
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
+
+    func presentRegisterAlert(withTitle title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let registerAction = UIAlertAction(title: "Register", style: .default) { _ in
+            alertController.dismiss(animated: true, completion: nil)
+            let viewController = RegisterViewController.instantiate()
+            viewController.modalTransitionStyle = .coverVertical
+            viewController.modalPresentationStyle = .fullScreen
+            self.present(viewController, animated: true, completion: nil)
+        }
+
+        let cancelAction = UIAlertAction(title: "Sign in", style: .destructive) { _ in
+            alertController.dismiss(animated: true, completion: nil)
+            let viewController = LoginViewController.instantiate()
+            viewController.modalTransitionStyle = .coverVertical
+            viewController.modalPresentationStyle = .fullScreen
+            self.present(viewController, animated: true, completion: nil)
+        }
+        alertController.addAction(registerAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true) {
+            alertController.view.superview?.isUserInteractionEnabled = true
+            alertController.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissOnTapOutside)))
+        }
+    }
+    @objc func dismissOnTapOutside() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

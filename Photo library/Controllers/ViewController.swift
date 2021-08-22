@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     private let fileManager = FileManager.default
     private let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("Images")
+    private lazy var dateFormatter = DateFormatter()
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var showButton: UIButton!
 
@@ -27,10 +28,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction private func showButtonPressed(_ sender: UIButton) {
-        let viewController = LoginViewController.instantiate()
-        viewController.modalTransitionStyle = .coverVertical
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true, completion: nil)
+        if !KeychainManager.shared.isUserSignedIn.isEmpty {
+            presentLibraryViewController()
+        } else {
+            presentRegisterAlert(withTitle: "Please register or sign in", message: "")
+        }
     }
 
     private func displayImagePickerController() {
@@ -47,10 +49,16 @@ class ViewController: UIViewController {
     }
 
     private func getCurrentDate(_ dateFormat: String) -> String {
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
         let dataString = dateFormatter.string(from: Date())
         return dataString
+    }
+
+    private func presentLibraryViewController() {
+        let viewController = LibraryViewController.instantiate()
+        viewController.modalTransitionStyle = .coverVertical
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true, completion: nil)
     }
 }
 
