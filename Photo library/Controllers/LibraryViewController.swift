@@ -38,7 +38,9 @@ class LibraryViewController: UIViewController {
         super.viewWillAppear(animated)
         loadImages()
         checkImageArray()
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     @IBAction private func logOutButtonPressed(_ sender: UIButton) {
         keychain["remember"] = nil
@@ -129,14 +131,14 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
             return UICollectionViewCell()
         }
 
-        DispatchQueue.main.async {
+//        DispatchQueue.main.async {
             cell.layer.cornerRadius = 10
             UIView.animate(withDuration: 3.0) {
                 cell.imageView.alpha = 1
             }
             cell.imageView.image = self.imagesArray[indexPath.item]
             cell.imageView.contentMode = .scaleAspectFill
-        }
+//        }
         return cell
     }
 
